@@ -16,10 +16,13 @@ struct NoteView: View {
     
     var body: some View {
         NavigationStack {
-            List(notes) { note in
-                NavigationLink(destination: NoteDetailView(note: note)) {
-                    Text(note.title ?? "Unknown Note")
+            List{
+                ForEach(notes) { note in
+                    NavigationLink(destination: NoteDetailView(note: note)) {
+                        Text(note.title ?? "Unknown Note")
+                    }
                 }
+                .onDelete(perform: deleteNote)
             }
             .navigationTitle("NotPad")
             .toolbar {
@@ -43,6 +46,20 @@ struct NoteView: View {
             print("Note successfully added!")
         } catch {
             print("Note couldn't save: \(error)")
+        }
+    }
+    
+    func deleteNote(offsets: IndexSet) {
+        for index in offsets {
+            let noteToDelete = notes[index]
+            context.delete(noteToDelete)
+        }
+        
+        do {
+            try context.save()
+            print("Note successfully deleted!")
+        } catch {
+            print("Deletion error: \(error)")
         }
     }
 }
