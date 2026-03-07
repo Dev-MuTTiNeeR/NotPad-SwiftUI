@@ -25,11 +25,16 @@ struct NoteView: View {
                 }
                 .onDelete(perform: deleteNote)
             }
-            .navigationTitle("NotPad")
             .navigationDestination(for: Note.self) { selectedNote in
                 NoteDetailView(note: selectedNote)
             }
             .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("NotPad")
+                        .font(.title)
+                        .bold()
+                }
+                
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {
                         addNewItem()

@@ -16,14 +16,6 @@ struct NoteDetailView: View {
     var body: some View {
         VStack {
             
-            TextField("Write title...", text: Binding(
-                get: { note.title ?? "" },
-                set: { note.title = $0 }
-            ))
-            .font(.title)
-            .bold()
-            .padding()
-            
             TextField("Write your note here...", text: Binding(
                 get: { note.content ?? "" },
                 set: { note.content = $0}
@@ -33,6 +25,17 @@ struct NoteDetailView: View {
             Spacer()
         }
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar{
+            ToolbarItem(placement: .principal) {
+                TextField("Write title...", text: Binding(
+                    get: { note.title ?? "" },
+                    set: { note.title = $0 }
+                ))
+                .font(.title)
+                .bold()
+                .padding()
+            }
+        }
         .onDisappear {
             if (note.title ?? "").isEmpty && (note.content ?? "").isEmpty {
                 context.delete(note)
