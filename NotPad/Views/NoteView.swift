@@ -13,18 +13,22 @@ struct NoteView: View {
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Note.title, ascending: true)], animation: .default)
     var notes: FetchedResults<Note>
     @Environment(\.managedObjectContext) var context
+    @State private var path = [Note]()
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             List{
                 ForEach(notes) { note in
-                    NavigationLink(destination: NoteDetailView(note: note)) {
+                    NavigationLink(value: note) {
                         Text(note.title ?? "Unknown Note")
                     }
                 }
                 .onDelete(perform: deleteNote)
             }
             .navigationTitle("NotPad")
+            .navigationDestination(for: Note.self) { selectedNote in
+                NoteDetailView(note: selectedNote)
+            }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {
@@ -39,14 +43,10 @@ struct NoteView: View {
     
     func addNewItem() {
         let newNote = Note(context: context)
-        newNote.title = "New Note \(Int.random(in: 1 ... 100))"
+        newNote.title = ""
+        newNote.content = ""
         
-        do {
-            try context.save()
-            print("Note successfully added!")
-        } catch {
-            print("Note couldn't save: \(error)")
-        }
+        path.append(newNote)
     }
     
     func deleteNote(offsets: IndexSet) {

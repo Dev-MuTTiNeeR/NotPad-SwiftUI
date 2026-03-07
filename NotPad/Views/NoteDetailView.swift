@@ -16,7 +16,7 @@ struct NoteDetailView: View {
     var body: some View {
         VStack {
             
-            TextField("Write here...", text: Binding(
+            TextField("Write title...", text: Binding(
                 get: { note.title ?? "" },
                 set: { note.title = $0 }
             ))
@@ -24,19 +24,26 @@ struct NoteDetailView: View {
             .bold()
             .padding()
             
-            TextEditor(text: Binding(
+            TextField("Write your note here...", text: Binding(
                 get: { note.content ?? "" },
                 set: { note.content = $0}
             ))
             .padding()
+            
+            Spacer()
         }
         .navigationBarTitleDisplayMode(.inline)
         .onDisappear {
-            do {
-                try context.save()
-                print("Changes have been successfully saved!")
-            } catch {
-                print("Saving error: \(error)")
+            
+            if note.title == "" && note.content == "" {
+                context.delete(note)
+            } else {
+                do {
+                    try context.save()
+                    print("Changes have been successfully saved!")
+                } catch {
+                    print("Saving error: \(error)")
+                }
             }
         }
     }
