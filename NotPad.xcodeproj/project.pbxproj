@@ -6,17 +6,24 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B2D65F0B2F4F4CBC0006357A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2D65F042F4F4CBC0006357A /* Assets.xcassets */; };
+		B2D65F0C2F4F4CBC0006357A /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D65F052F4F4CBC0006357A /* NoteView.swift */; };
+		B2D65F0D2F4F4CBC0006357A /* NotPadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D65F062F4F4CBC0006357A /* NotPadApp.swift */; };
+		B2D65F0E2F4F4CBC0006357A /* NotPadModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B2D65F072F4F4CBC0006357A /* NotPadModel.xcdatamodeld */; };
+		B2D65F0F2F4F4CBC0006357A /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D65F082F4F4CBC0006357A /* PersistenceController.swift */; };
+		B2D65F202F4F59A30006357A /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D65F1F2F4F59A30006357A /* NoteDetailView.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		B2D65EE42F4F34B60006357A /* NotPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2D65F042F4F4CBC0006357A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B2D65F052F4F4CBC0006357A /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
+		B2D65F062F4F4CBC0006357A /* NotPadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotPadApp.swift; sourceTree = "<group>"; };
+		B2D65F082F4F4CBC0006357A /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		B2D65F0A2F4F4CBC0006357A /* NotPadModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NotPadModel.xcdatamodel; sourceTree = "<group>"; };
+		B2D65F1F2F4F59A30006357A /* NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		B2D65EE62F4F34B60006357A /* NotPad */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = NotPad;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B2D65EE12F4F34B60006357A /* Frameworks */ = {
@@ -32,7 +39,7 @@
 		B2D65EDB2F4F34B60006357A = {
 			isa = PBXGroup;
 			children = (
-				B2D65EE62F4F34B60006357A /* NotPad */,
+				B2D65F092F4F4CBC0006357A /* NotPad */,
 				B2D65EE52F4F34B60006357A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +50,43 @@
 				B2D65EE42F4F34B60006357A /* NotPad.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B2D65F092F4F4CBC0006357A /* NotPad */ = {
+			isa = PBXGroup;
+			children = (
+				B2D65F062F4F4CBC0006357A /* NotPadApp.swift */,
+				B2D65F042F4F4CBC0006357A /* Assets.xcassets */,
+				B2D65F112F4F4CE30006357A /* DataModel */,
+				B2D65F122F4F4CF40006357A /* Views */,
+				B2D65F102F4F4CCF0006357A /* Controllers */,
+			);
+			path = NotPad;
+			sourceTree = "<group>";
+		};
+		B2D65F102F4F4CCF0006357A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B2D65F082F4F4CBC0006357A /* PersistenceController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B2D65F112F4F4CE30006357A /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				B2D65F072F4F4CBC0006357A /* NotPadModel.xcdatamodeld */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		B2D65F122F4F4CF40006357A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B2D65F052F4F4CBC0006357A /* NoteView.swift */,
+				B2D65F1F2F4F59A30006357A /* NoteDetailView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,9 +103,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				B2D65EE62F4F34B60006357A /* NotPad */,
 			);
 			name = NotPad;
 			packageProductDependencies = (
@@ -109,6 +150,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2D65F0B2F4F4CBC0006357A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +161,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2D65F0C2F4F4CBC0006357A /* NoteView.swift in Sources */,
+				B2D65F202F4F59A30006357A /* NoteDetailView.swift in Sources */,
+				B2D65F0D2F4F4CBC0006357A /* NotPadApp.swift in Sources */,
+				B2D65F0E2F4F4CBC0006357A /* NotPadModel.xcdatamodeld in Sources */,
+				B2D65F0F2F4F4CBC0006357A /* PersistenceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +379,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B2D65F072F4F4CBC0006357A /* NotPadModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B2D65F0A2F4F4CBC0006357A /* NotPadModel.xcdatamodel */,
+			);
+			currentVersion = B2D65F0A2F4F4CBC0006357A /* NotPadModel.xcdatamodel */;
+			path = NotPadModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B2D65EDC2F4F34B60006357A /* Project object */;
 }

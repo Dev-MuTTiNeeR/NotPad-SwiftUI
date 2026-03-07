@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import CoreData
 
 @main
 struct NotPadApp: App {
+    
+    let persistenceController = PersistenceController.shared
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NoteView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
