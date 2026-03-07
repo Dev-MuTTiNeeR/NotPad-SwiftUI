@@ -34,17 +34,17 @@ struct NoteDetailView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .onDisappear {
-            
-            if note.title == "" && note.content == "" {
+            if (note.title ?? "").isEmpty && (note.content ?? "").isEmpty {
                 context.delete(note)
-            } else {
-                do {
-                    try context.save()
-                    print("Changes have been successfully saved!")
-                } catch {
-                    print("Saving error: \(error)")
-                }
             }
+            
+            do {
+                try context.save()
+                print("Changes have been successfully saved!")
+            } catch {
+                print("Saving error: \(error)")
+            }
+            
         }
     }
 }
