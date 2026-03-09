@@ -16,35 +16,41 @@ struct NoteView: View {
     @State private var path = [Note]()
     
     var body: some View {
-        NavigationStack(path: $path) {
-            List{
-                ForEach(notes) { note in
-                    NavigationLink(value: note) {
-                        Text(note.title ?? "Unknown Note")
+            NavigationStack(path: $path) {
+                VStack(spacing: 0) {
+                    
+                    Divider()
+                    
+                    List {
+                        ForEach(notes) { note in
+                            NavigationLink(value: note) {
+                                Text(note.title ?? "Unknown Note")
+                            }
+                        }
+                        .onDelete(perform: deleteNote)
                     }
                 }
-                .onDelete(perform: deleteNote)
-            }
-            .navigationDestination(for: Note.self) { selectedNote in
-                NoteDetailView(note: selectedNote)
-            }
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("NotPad")
-                        .font(.title)
-                        .bold()
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationDestination(for: Note.self) { selectedNote in
+                    NoteDetailView(note: selectedNote)
                 }
-                
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: {
-                        addNewItem()
-                    }) {
-                        Image(systemName: "plus")
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Text("NotPad")
+                            .font(.title)
+                            .bold()
+                    }
+                    
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button(action: {
+                            addNewItem()
+                        }) {
+                            Image(systemName: "plus")
+                        }
                     }
                 }
             }
         }
-    }
     
     func addNewItem() {
         let newNote = Note(context: context)
