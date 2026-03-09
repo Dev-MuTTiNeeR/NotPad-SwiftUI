@@ -15,6 +15,15 @@ struct NoteDetailView: View {
     
     var body: some View {
         VStack{
+            TextField("Write title...", text: Binding(
+                get: { note.title ?? "" },
+                set: { note.title = $0 }
+            ), axis: .vertical)
+            .font(.title)
+            .bold()
+            .multilineTextAlignment(.center)
+            .lineLimit(1...3)
+            
             Divider()
             
             ZStack(alignment: .topLeading) {
@@ -33,18 +42,6 @@ struct NoteDetailView: View {
             }
             .padding(.horizontal)
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar{
-                ToolbarItem(placement: .principal) {
-                    TextField("Write title...", text: Binding(
-                        get: { note.title ?? "" },
-                        set: { note.title = $0 }
-                    ))
-                    .font(.title)
-                    .bold()
-                    .multilineTextAlignment(.center)
-                    .frame(height: 30)
-                }
-            }
             .onDisappear {
                 if (note.title ?? "").isEmpty && (note.content ?? "").isEmpty {
                     context.delete(note)

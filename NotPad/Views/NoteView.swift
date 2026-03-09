@@ -28,6 +28,7 @@ struct NoteView: View {
                             }
                         }
                         .onDelete(perform: deleteNote)
+                        .lineLimit(1)
                     }
                 }
                 .navigationBarTitleDisplayMode(.inline)
