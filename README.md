@@ -16,4 +16,3 @@ A minimalist, fast, and user-friendly iOS note-taking application. Built with a 
 * **MVVM Architecture:** Efficient state and data management utilizing `@Environment` and `@ObservedObject`.
 
 ## 📱 Screenshots
-*(You can add the screenshots of your Main View and Note Detail View here)*
